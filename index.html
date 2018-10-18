@@ -14,27 +14,28 @@
     <form 
         action="https://dc-coffeerun.herokuapp.com/api/coffeeOrders" 
         method="POST"
+        data-form
     >
         <!-- label tag wraps to give user a big click target to focus on the input -->
         <label>
             Coffee:
             <!-- placeholder shows user example input -->
-            <input type="text" name="coffee" placeholder="black">
+            <input type="text" name="coffee" placeholder="black" value="black">
         </label>
         <br><br>
         <label>
             Email Address:
-            <input type="email" name="emailAddress" placeholder="name@host.com">
+            <input type="email" name="emailAddress" placeholder="name@host.com" value="me@host.com">
         </label>
         <br><br>
         <label>
             Flavor:
-            <input type="text" name="flavor" placeholder="caramel">
+            <input type="text" name="flavor" placeholder="caramel" value="caramel">
         </label>
         <br><br>
         <label>
             Size:
-            <input type="text" name="size" placeholder="small, medium, large">
+            <input type="text" name="size" placeholder="small, medium, large" value="large">
         </label>
         <br><br>
         <label>
