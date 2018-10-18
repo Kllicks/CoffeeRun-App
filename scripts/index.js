@@ -36,6 +36,8 @@ function handleSubmit(event) {
         },
         body: JSON.stringify(data)
     })
+    .then(r => r.json())
+    .then(console.log)
     // debugger;
 }
 
