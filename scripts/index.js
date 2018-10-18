@@ -2,6 +2,7 @@
 //| DOM Selection|
 //|==============|
 const orderForm = document.querySelector(`[data-form]`);
+const outputElement = document.querySelector(`[data-output]`);
 
 
 
@@ -39,8 +40,10 @@ function handleSubmit(event) {
     .then(r => r.json())
     .then(console.log)
     // debugger;
-}
 
+    
+    outputElement.textContent = "thank you";
+}
 
 //|=====================|
 //| Main Event Listeners|
