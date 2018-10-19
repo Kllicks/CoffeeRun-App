@@ -2,8 +2,7 @@
 //| DOM Selection|
 //|==============|
 const orderForm = document.querySelector(`[data-form]`);
-const outputElement = document.querySelector(`[data-output]`);
-
+const notificationArea = document.querySelector(`[data-notification]`);
 
 
 //|=================|
@@ -38,13 +37,24 @@ function handleSubmit(event) {
         body: JSON.stringify(data)
     })
     .then(r => r.json())
-    .then(console.log)
+    .then(() => {
+        notifyUser(`Your coffee order is complete`);
+    }) // gotta wrap it in an anonymous function
     // debugger;
 
-    
-    outputElement.textContent = "thank you";
 }
 
+function notifyUser(notificationText) {
+    // create a div
+    const notificationBox = document.createElement('div');
+    // add some text content
+    notificationBox.textContent = notificationText;
+
+    notificationArea.innerHTML = ``;
+    // append to...something...somewhere...shomehow...
+    notificationArea.appendChild(notificationBox);
+
+}
 //|=====================|
 //| Main Event Listeners|
 //|=====================|
