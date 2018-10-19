@@ -1,4 +1,9 @@
 //|==============|
+//| Constants    |
+//|==============|
+const API_URL = `https://dc-coffeerun.herokuapp.com/api/coffeeOrders`;
+
+//|==============|
 //| DOM Selection|
 //|==============|
 const orderForm = document.querySelector(`[data-form]`);
@@ -20,7 +25,7 @@ function handleSubmit(event) {
 	// Call fetch()
 	// pass it the URL
 	// and an object with a method and a body
-	const url = event.target.action;
+	const url = API_URL;
 	const method = event.target.method;
 	const elements = event.target.elements;
 	const data = {
@@ -70,9 +75,36 @@ function confirmReset(e) {
 	}
 }
 
+// working with one coffee order
+function convertOrderToElement(orderInfo) {
+	// debugger;
+	const orderElement = document.createElement(`p`);
+	const orderText = `
+		${orderInfo.size} ${orderInfo.flavor} ${orderInfo.coffee} for ${orderInfo.emailAddress} 
+		<br>
+		(${orderInfo.strength})
+	`;
+	orderElement.innerHTML = orderText; // Dangerous!
+
+	return orderElement;
+}
+
+// working with an array of coffee orders
+function convertArrayOfOrdersToElements(giantFrickinOrderObject) {
+	let orderArray = Object.values(giantFrickinOrderObject);
+	let elementsArray = orderArray.map(convertOrderToElement);
+	return elementsArray;
+}
+
 function getAndShowOrders(event) {
 	console.log(`click`);
-	console.log(event);
+	fetch(API_URL)
+		.then(response => response.json())
+		.then(convertArrayOfOrdersToElements)
+		.then(elementsArray => {
+			// debugger;
+			elementsArray.forEach(e => orderListingArea.appendChild(e))
+		})
 }
 
 //|=====================|
