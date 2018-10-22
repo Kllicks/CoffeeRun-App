@@ -1,3 +1,7 @@
+// Need to go over this before project start.
+// go over structure and basic javaScript funtions
+// learn ajax requests more thoroughly
+
 //|==============|
 //| Constants    |
 //|==============|
