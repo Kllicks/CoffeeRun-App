@@ -48,7 +48,7 @@ function handleSubmit(event) {
 			// check the orderInfo for errors
 			// && is a "falsey hunter"
 			// It moves from left to right and will stop moving whene it finds the first falsey expression
-			if (orderInfo.name && orderInfo.name === `ValidationError`) {
+			if (orderInfo.name && (orderInfo.name === `ValidationError`)) {
 				notifyUser(`I'm sorry. Please fill out the coffee field and the email address field. Thank you.`);
 			} else {
 				notifyUser(`Your coffee order is complete`);
